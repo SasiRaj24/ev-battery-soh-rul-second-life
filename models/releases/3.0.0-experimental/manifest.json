@@ -1,0 +1,93 @@
+{
+  "model_version": "3.0.0-experimental",
+  "release_status": "experimental_not_default",
+  "created_at_utc": "2026-10-18T18:17:18.562441+00:00",
+  "training_script": "train_nasa_models_v3.py",
+  "training_script_sha256": "d3b61e959c86fde14994d54c6ee961b7bd68d9e8fcbc4ee3824077b23a453441",
+  "source_sha256": {
+    "B0005": "0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0",
+    "B0006": "fa818ab4db5db8ab21e910b6dd6c3e20d3761bb9672089e1a4de8f96074616c5",
+    "B0007": "d022afa086efaf54ab5b63f05220f5be178c8027e2fa8d68589db0e85a441a3b",
+    "B0018": "d1e6c923a43ea1c9666b3a90bbb521757a067fd60b4d17dbfaa49c50b179da69"
+  },
+  "runtime_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0"
+  },
+  "models": {
+    "next_cycle_soh": {
+      "artifact": "nasa_soh_linear.joblib",
+      "sha256": "4dc023d58c8d8ff4c9d664ba5aecb911d6fd2d54ac7676660af432c2e8bf4bc2",
+      "estimator": "sklearn.linear_model.LinearRegression",
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "next recorded discharge relative SOH percent, baseline is first valid observed discharge capacity",
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0007",
+        "B0018"
+      ],
+      "training_rows": 628
+    },
+    "rul": {
+      "artifact": "nasa_rul_xgboost.joblib",
+      "sha256": "48af61e96ba1be26ac82c0fa61437317be17615a292d0d84aa7a327ab4781eb3",
+      "estimator": "xgboost.XGBRegressor",
+      "parameters": {
+        "objective": "reg:squarederror",
+        "n_estimators": 200,
+        "max_depth": 2,
+        "learning_rate": 0.025,
+        "subsample": 0.9,
+        "colsample_bytree": 1.0,
+        "reg_lambda": 2.0,
+        "random_state": 42,
+        "n_jobs": 1
+      },
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "discharge_capacity_Ah",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "remaining recorded discharges to first capacity <= 1.4 Ah",
+      "rul_eol_capacity_Ah": 1.4,
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0018"
+      ],
+      "training_rows": 328,
+      "censored_cells_excluded": [
+        "B0007"
+      ]
+    }
+  },
+  "validation_reference": "See data/processed/research_evaluation_v4 and reports/research_evaluation_v4_report.md; final fit artifacts are not the held-out fold estimators.",
+  "limitations": [
+    "Only four independent SOH cells and three complete RUL cells are available.",
+    "B0007 is right-censored for the 1.4 Ah target and excluded from RUL fitting.",
+    "NASA cutoff-voltage and test protocol differences limit transfer.",
+    "Laboratory-cell results do not validate EV packs, field performance, or second-life safety."
+  ],
+  "second_life_screen": {
+    "status": "capacity_only_pre_screen",
+    "application_recommendation": null,
+    "project_assumption_thresholds_relative_soh_percent": {
+      "lower_capacity_review": 70.0,
+      "higher_capacity_review": 80.0
+    }
+  }
+}

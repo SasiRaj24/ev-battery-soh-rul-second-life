@@ -1,0 +1,15 @@
+{
+  "definition": "Empirical 1st and 99th percentiles of observed next-record SOH change; model forecasts outside this range are withheld.",
+  "by_source": {
+    "Oxford": {
+      "lower_q01_soh_pp": -1.2232783150792386,
+      "upper_q99_soh_pp": 0.392468921154121,
+      "records": 511
+    },
+    "CALCE_CS2": {
+      "lower_q01_soh_pp": -11.746911508760785,
+      "upper_q99_soh_pp": 11.587851460625618,
+      "records": 5415
+    }
+  }
+}

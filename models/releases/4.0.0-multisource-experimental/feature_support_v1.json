@@ -1,0 +1,87 @@
+{
+  "definition": "1st and 99th percentiles of cell-balanced source-family training rows; out-of-range inputs are withheld",
+  "features": [
+    "current_soh_percent",
+    "previous_soh_percent",
+    "previous_soh_change_pp_per_100_cycles",
+    "previous_gap_cycles"
+  ],
+  "by_source": {
+    "Oxford": {
+      "training_cells": [
+        "Cell1",
+        "Cell2",
+        "Cell3",
+        "Cell4",
+        "Cell5",
+        "Cell6",
+        "Cell7",
+        "Cell8"
+      ],
+      "valid_training_rows": 503,
+      "limits": {
+        "current_soh_percent": {
+          "lower_q01": 75.82097833862953,
+          "upper_q99": 98.84648616732913,
+          "observed_min": 68.23926290322355,
+          "observed_max": 98.97125853434402
+        },
+        "previous_soh_percent": {
+          "lower_q01": 76.18207779862041,
+          "upper_q99": 100.0,
+          "observed_min": 68.23926290322355,
+          "observed_max": 100.0
+        },
+        "previous_soh_change_pp_per_100_cycles": {
+          "lower_q01": -1.152323699769346,
+          "upper_q99": 0.39627215599266064,
+          "observed_min": -7.577590751409559,
+          "observed_max": 8.273963933221893
+        },
+        "previous_gap_cycles": {
+          "lower_q01": 100.0,
+          "upper_q99": 200.0,
+          "observed_min": 100.0,
+          "observed_max": 300.0
+        }
+      }
+    },
+    "CALCE_CS2": {
+      "training_cells": [
+        "CS2_33",
+        "CS2_34",
+        "CS2_35",
+        "CS2_36",
+        "CS2_37",
+        "CS2_38"
+      ],
+      "valid_training_rows": 5409,
+      "limits": {
+        "current_soh_percent": {
+          "lower_q01": 22.749333209303604,
+          "upper_q99": 98.3745623727823,
+          "observed_min": 17.71480994362255,
+          "observed_max": 99.935683412055
+        },
+        "previous_soh_percent": {
+          "lower_q01": 23.05198227557186,
+          "upper_q99": 98.59216037005856,
+          "observed_min": 17.71480994362255,
+          "observed_max": 100.0
+        },
+        "previous_soh_change_pp_per_100_cycles": {
+          "lower_q01": -1174.8972103643418,
+          "upper_q99": 1158.8538337642701,
+          "observed_min": -5096.966203209054,
+          "observed_max": 5366.777385019132
+        },
+        "previous_gap_cycles": {
+          "lower_q01": 1.0,
+          "upper_q99": 1.0,
+          "observed_min": 1.0,
+          "observed_max": 1.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "model_version": "2.0.0-experimental",
+  "created_at_utc": "2026-10-18T17:22:34.091958+00:00",
+  "models": {
+    "next_cycle_soh": {
+      "artifact": "nasa_soh_linear_v2.joblib",
+      "estimator": "sklearn.linear_model.LinearRegression",
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "next recorded discharge relative SOH percent",
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0007",
+        "B0018"
+      ],
+      "training_rows": 628,
+      "cross_battery_comparator": "LOBO MAE 0.5924 SOH percentage points; persistence MAE 0.5574"
+    },
+    "rul": {
+      "artifact": "nasa_rul_xgboost_v2.joblib",
+      "estimator": "xgboost.XGBRegressor",
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "discharge_capacity_Ah",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "remaining recorded discharges until first capacity <= 1.4 Ah",
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0018"
+      ],
+      "training_rows": 328,
+      "cross_battery_comparator": "Exploratory three-cell LOBO; XGBoost pooled MAE 11.67 cycles across three held-out complete cells",
+      "censored_cells_excluded": [
+        "B0007"
+      ]
+    }
+  },
+  "provenance": "NASA PCoE accelerated-aging laboratory cells B0005, B0006, B0007 and B0018.",
+  "limitations": [
+    "Final inference artifacts are fitted on the available eligible cells; validation metrics come only from held-out-cell evaluation and are not these artifacts' out-of-sample performance.",
+    "Only four cells are available and only three cross the 1.4 Ah RUL threshold.",
+    "B0007 is right-censored; it is excluded from RUL training rather than assigned an invented failure time.",
+    "This dataset does not establish vehicle-pack performance or second-life safety."
+  ],
+  "second_life_screen": {
+    "status": "heuristic_only",
+    "thresholds_relative_soh_percent": {
+      "higher_capacity_review": 80.0,
+      "lower_capacity_review": 70.0
+    },
+    "disclaimer": "Project screening assumptions, not universal industry cutoffs, certification criteria, or a safety determination."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "model_version": "4.0.0-multisource-experimental",
+  "release_status": "experimental_source_specific_models",
+  "created_at_utc": "2026-10-19T18:00:57.429137+00:00",
+  "training_script": "train_source_soh_models_v1.py",
+  "training_script_sha256": "e0c2cf49689a2dddb47685882888b9e73fd4578ec14be3f16a9db1e07ec8d177",
+  "comparison_manifest": "data/processed/multidataset_comparison_v1_3/comparison_manifest_v1_3.json",
+  "comparison_manifest_sha256": "a0bbf0ce6a2815936ea259b0ea8c9757d98660224a75ae62964429dfb1d7a2c3",
+  "models": {
+    "next_cycle_soh": {
+      "artifact": "../../nasa_soh_linear_v2.joblib",
+      "estimator": "sklearn.linear_model.LinearRegression",
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "next recorded discharge relative SOH percent",
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0007",
+        "B0018"
+      ],
+      "training_rows": 628,
+      "cross_battery_comparator": "LOBO MAE 0.5924 SOH percentage points; persistence MAE 0.5574",
+      "artifact_model_version": "2.0.0-experimental"
+    },
+    "rul": {
+      "artifact": "../../nasa_rul_xgboost_v2.joblib",
+      "estimator": "xgboost.XGBRegressor",
+      "feature_order": [
+        "cycle_number",
+        "ambient_temperature_C",
+        "discharge_capacity_Ah",
+        "soh_percent",
+        "previous_soh_percent",
+        "capacity_change_from_previous_Ah"
+      ],
+      "target": "remaining recorded discharges until first capacity <= 1.4 Ah",
+      "training_cells": [
+        "B0005",
+        "B0006",
+        "B0018"
+      ],
+      "training_rows": 328,
+      "cross_battery_comparator": "Exploratory three-cell LOBO; XGBoost pooled MAE 11.67 cycles across three held-out complete cells",
+      "censored_cells_excluded": [
+        "B0007"
+      ],
+      "artifact_model_version": "2.0.0-experimental"
+    }
+  },
+  "source_models": {
+    "Oxford": {
+      "artifact": "oxford_soh_ridge_v1.joblib",
+      "sha256": "635528d4eff262d070c02cc17421aaba6b9868dff50bfa9dee7d8f282218e956",
+      "estimator": "StandardScaler + Ridge(alpha=2.0)",
+      "feature_order": [
+        "current_soh_percent",
+        "previous_soh_percent",
+        "previous_soh_change_pp_per_100_cycles",
+        "previous_gap_cycles"
+      ],
+      "target": "next_soh_change_pp_per_100_cycles",
+      "capacity_reference": "capacity from the first measured record supplied by the user",
+      "training_cells": [
+        "Cell1",
+        "Cell2",
+        "Cell3",
+        "Cell4",
+        "Cell5",
+        "Cell6",
+        "Cell7",
+        "Cell8"
+      ],
+      "training_rows": 503,
+      "sample_weighting": "equal total weight per cell, then equal weight per valid record",
+      "validation": {
+        "method": "leave-one-cell-out; the reported validation value is from held-out folds, not this final all-cell fit",
+        "held_out_cells": 8,
+        "model_macro_cell_mae_soh_pp": 0.256013,
+        "persistence_macro_cell_mae_soh_pp": 0.45205,
+        "observed_cell_error_range_soh_pp": [
+          0.1302,
+          0.5479
+        ],
+        "interpretation": "Exploratory cell-held-out result; eight cells, no confidence interval."
+      }
+    },
+    "CALCE_CS2": {
+      "artifact": "calce_cs2_soh_xgboost_v1.joblib",
+      "sha256": "ddc8745c94bf3fc22d27851315691484f8a5e6c6c66268cfcb347db66dd8feba",
+      "estimator": "XGBRegressor",
+      "feature_order": [
+        "current_soh_percent",
+        "previous_soh_percent",
+        "previous_soh_change_pp_per_100_cycles",
+        "previous_gap_cycles"
+      ],
+      "target": "next_soh_change_pp_per_100_cycles",
+      "capacity_reference": "capacity from the first measured record supplied by the user",
+      "training_cells": [
+        "CS2_33",
+        "CS2_34",
+        "CS2_35",
+        "CS2_36",
+        "CS2_37",
+        "CS2_38"
+      ],
+      "training_rows": 5409,
+      "sample_weighting": "equal total weight per cell, then equal weight per valid record",
+      "validation": {
+        "method": "leave-one-cell-out; the reported validation value is from held-out folds, not this final all-cell fit",
+        "held_out_cells": 6,
+        "model_macro_cell_mae_soh_pp": 0.990584,
+        "persistence_macro_cell_mae_soh_pp": 0.993798,
+        "observed_cell_error_range_soh_pp": [
+          0.9231,
+          1.0997
+        ],
+        "interpretation": "Exploratory result is effectively tied with persistence at this precision; six cells, no confidence interval."
+      }
+    }
+  },
+  "source_rul_status": {
+    "NASA": "Existing NASA-specific RUL model only; 1.4 Ah study endpoint.",
+    "Oxford": "RUL withheld: only two of eight cells crossed the 70%-of-first-record exploratory endpoint.",
+    "CALCE_CS2": "RUL withheld in the interactive analyzer; cross-family RUL validation was not reliable enough for transfer."
+  },
+  "limitations": [
+    "Models are selected and fitted for their named source family; no cross-family generalization is claimed.",
+    "Oxford and CALCE SOH use a harmonized four-feature model and the user-provided first-measurement reference capacity.",
+    "CALCE validation is effectively tied with persistence and should be treated as a research comparison, not a demonstrated improvement.",
+    "RUL and second-life advice are not available for Oxford or CALCE in this release.",
+    "Laboratory-cell evidence does not establish EV pack or field validation."
+  ]
+}
