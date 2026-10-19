@@ -1,3 +1,77 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7b1c03253bd65f51a8b3faa7beb282e71cbc8e9f5dc7a882cd26b4723ed79b62
-size 3331
+{
+  "title": "NASA cell cross-battery next-discharge SOH prediction",
+  "created_at_utc": "2026-10-18T16:59:24.476631+00:00",
+  "validation": "Leave-one-battery-out; each test battery is excluded entirely from training.",
+  "batteries": [
+    "B0005",
+    "B0006",
+    "B0007",
+    "B0018"
+  ],
+  "target": "SOH of the next valid recorded discharge, normalized to that battery's first valid discharge capacity.",
+  "features": [
+    "cycle_number",
+    "ambient_temperature_C",
+    "soh_percent",
+    "previous_soh_percent",
+    "capacity_change_from_previous_Ah"
+  ],
+  "soh_definition": "Discharge capacity / first valid discharge capacity * 100; baseline is measured initial capacity, not rated capacity.",
+  "pooled_metrics": {
+    "linear_regression": {
+      "mae_soh_percentage_points": 0.5924017408193868,
+      "rmse_soh_percentage_points": 1.0282169151367162,
+      "r2": 0.9909743153464794
+    },
+    "persistence": {
+      "mae_soh_percentage_points": 0.5574394177141629,
+      "rmse_soh_percentage_points": 0.9569306111510316,
+      "r2": 0.9921824338960318
+    },
+    "xgboost": {
+      "mae_soh_percentage_points": 1.3088291122123612,
+      "rmse_soh_percentage_points": 2.6377711403898263,
+      "r2": 0.9406002123813574
+    }
+  },
+  "fold_metrics_file": "nasa_cross_battery_v1_fold_metrics.csv",
+  "predictions_file": "nasa_cross_battery_v1_predictions.csv",
+  "battery_data_summary": {
+    "B0005": {
+      "valid_discharge_records": 167,
+      "first_discharge_capacity_Ah": 1.846327249719927,
+      "last_discharge_capacity_Ah": 1.3250793286429356,
+      "relative_soh_min_percent": 69.34884167276275,
+      "relative_soh_max_percent": 99.74764875349146
+    },
+    "B0006": {
+      "valid_discharge_records": 167,
+      "first_discharge_capacity_Ah": 2.0251402460314116,
+      "last_discharge_capacity_Ah": 1.1856752327929356,
+      "relative_soh_min_percent": 56.689285192545555,
+      "relative_soh_max_percent": 99.49898508143073
+    },
+    "B0007": {
+      "valid_discharge_records": 167,
+      "first_discharge_capacity_Ah": 1.880637027686859,
+      "last_discharge_capacity_Ah": 1.4324552720625434,
+      "relative_soh_min_percent": 74.05692816217145,
+      "relative_soh_max_percent": 99.59892428071969
+    },
+    "B0018": {
+      "valid_discharge_records": 131,
+      "first_discharge_capacity_Ah": 1.8431955317089987,
+      "last_discharge_capacity_Ah": 1.341051440640485,
+      "relative_soh_min_percent": 72.29370201580872,
+      "relative_soh_max_percent": 99.3633983664338
+    }
+  },
+  "limitations": [
+    "These are accelerated laboratory cell measurements, not EV battery-pack validation.",
+    "The initial discharge capacity for each held-out cell is used to define relative SOH; this assumes that first measurement is available.",
+    "NASA discharge cutoff voltage differs among batteries, limiting direct capacity comparability.",
+    "Only four cells are included; leave-one-cell-out estimates are small-sample evidence.",
+    "Current-cycle measurements are used to forecast the next recorded discharge; the model is not a multi-step RUL estimator."
+  ],
+  "interpretation": "All numbers are computed from the included NASA laboratory cell files by this run; assumptions and limitations are listed separately."
+}

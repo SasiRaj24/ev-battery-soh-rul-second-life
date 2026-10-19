@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:00bcaa81be0ecac3b3aa5a64f7fd286040b81e78b33767a45ef5ebbedb8ab438
-size 277
+dataset,held_out_cell,training_cells,model,training_rows,testing_rows,mae_cycles,rmse_cycles,r2
+Oxford,Cell2,Cell5,xgboost,45,69,1927.646286121313,2071.88539192928,0.09119260288533981
+Oxford,Cell5,Cell2,xgboost,69,45,2391.339035373264,2391.3977156394303,-1.8227583861272252

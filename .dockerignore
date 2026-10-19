@@ -1,0 +1,11 @@
+.git/
+.venv/
+**/__pycache__/
+**/*.py[cod]
+**/node_modules/
+**/dist_*/
+frontend_v1/
+data/nasa/
+data/oxford/
+data/calce/
+logs/

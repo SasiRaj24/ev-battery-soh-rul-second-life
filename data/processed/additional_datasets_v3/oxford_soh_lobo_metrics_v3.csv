@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eebcd84b5692249f1397e26d266f4024819891ff701c375bc6319b740cf25d07
-size 3043
+dataset,held_out_cell,training_cells,model,training_rows,testing_rows,mae_soh_percentage_points,rmse_soh_percentage_points,r2
+Oxford,Cell1,"Cell2,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",persistence,434,77,0.0,0.0,1.0
+Oxford,Cell1,"Cell2,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",linear_regression,434,77,1.4784166825830216e-07,1.715597013120175e-07,0.9999999999999993
+Oxford,Cell1,"Cell2,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",xgboost,434,77,0.0681137330480058,0.10931186555908197,0.9997342568309767
+Oxford,Cell2,"Cell1,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",persistence,439,72,0.0,0.0,1.0
+Oxford,Cell2,"Cell1,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",linear_regression,439,72,3.323525395633927e-08,5.089422901530398e-08,1.0
+Oxford,Cell2,"Cell1,Cell3,Cell4,Cell5,Cell6,Cell7,Cell8",xgboost,439,72,0.24535372681443826,0.9913513199556977,0.9824414294325057
+Oxford,Cell3,"Cell1,Cell2,Cell4,Cell5,Cell6,Cell7,Cell8",persistence,436,75,0.0,0.0,1.0
+Oxford,Cell3,"Cell1,Cell2,Cell4,Cell5,Cell6,Cell7,Cell8",linear_regression,436,75,5.669644584334795e-08,5.945136018588152e-08,0.9999999999999999
+Oxford,Cell3,"Cell1,Cell2,Cell4,Cell5,Cell6,Cell7,Cell8",xgboost,436,75,0.06579679467608628,0.08013286238577152,0.9998519301065214
+Oxford,Cell4,"Cell1,Cell2,Cell3,Cell5,Cell6,Cell7,Cell8",persistence,465,46,0.0,0.0,1.0
+Oxford,Cell4,"Cell1,Cell2,Cell3,Cell5,Cell6,Cell7,Cell8",linear_regression,465,46,5.961822015775475e-08,6.671086397560538e-08,0.9999999999999999
+Oxford,Cell4,"Cell1,Cell2,Cell3,Cell5,Cell6,Cell7,Cell8",xgboost,465,46,0.05042587684958053,0.07011139192727815,0.9998604148615615
+Oxford,Cell5,"Cell1,Cell2,Cell3,Cell4,Cell6,Cell7,Cell8",persistence,466,45,0.0,0.0,1.0
+Oxford,Cell5,"Cell1,Cell2,Cell3,Cell4,Cell6,Cell7,Cell8",linear_regression,466,45,7.311899850037661e-08,1.4552226753618812e-07,0.9999999999999994
+Oxford,Cell5,"Cell1,Cell2,Cell3,Cell4,Cell6,Cell7,Cell8",xgboost,466,45,0.2208786098178027,1.1506133724491334,0.9664831314695639
+Oxford,Cell6,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell7,Cell8",persistence,466,45,0.0,0.0,1.0
+Oxford,Cell6,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell7,Cell8",linear_regression,466,45,5.953854408997156e-08,8.70843144969822e-08,0.9999999999999998
+Oxford,Cell6,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell7,Cell8",xgboost,466,45,0.5267965054890703,1.1906755489746963,0.9515423839854977
+Oxford,Cell7,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell8",persistence,435,76,0.0,0.0,1.0
+Oxford,Cell7,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell8",linear_regression,435,76,8.08656705574226e-08,1.073640719502722e-07,0.9999999999999997
+Oxford,Cell7,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell8",xgboost,435,76,0.10581513368329709,0.12740707391623068,0.9994735307329476
+Oxford,Cell8,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell7",persistence,436,75,0.0,0.0,1.0
+Oxford,Cell8,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell7",linear_regression,436,75,1.535045970513238e-07,1.8579948564077486e-07,0.9999999999999992
+Oxford,Cell8,"Cell1,Cell2,Cell3,Cell4,Cell5,Cell6,Cell7",xgboost,436,75,0.06321623472078235,0.08845237001370959,0.9998197342697835

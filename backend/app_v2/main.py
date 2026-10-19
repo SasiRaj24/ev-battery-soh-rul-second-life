@@ -1,8 +1,10 @@
 from typing import Literal
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+from fastapi.staticfiles import StaticFiles
 
 from . import service
 
@@ -99,3 +101,10 @@ def analyze_parameters(parameters: BatteryParameters) -> dict:
 @app.post("/api/v2/analyze/collective")
 def analyze_collective(parameters: CollectiveBatteryParameters) -> dict:
     return service.analyze_collective_parameters(parameters.model_dump())
+
+
+# In production, the Docker image includes the built React app. Keeping the
+# mount conditional preserves the separate local Vite development workflow.
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend_v2" / "dist"
+if FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="dashboard")

@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e540eace3315b403c8fb9acf9bfc0e0dd1fe79fad0bf05ce04e26c402221897
-size 355
+NASA B0005 next-cycle SOH prediction comparison
+Test samples: 34
+
+MAE and RMSE are in SOH percentage points.
+Lower MAE/RMSE is better.
+
+persistence_prediction_percent: MAE=0.3524, RMSE=0.5392
+trend_prediction_percent: MAE=0.3985, RMSE=0.7243
+linear_prediction_percent: MAE=0.4067, RMSE=0.6591
+xgboost_prediction_percent: MAE=3.0715, RMSE=3.2857

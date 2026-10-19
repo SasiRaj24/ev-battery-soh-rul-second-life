@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cb768c8aa9360bc9276fdf96c0f176a2ccd4df36f10913f0997dd10a8c60ed7e
-size 591
+{
+  "model": "LinearRegression",
+  "battery_id": "B0005",
+  "task": "next_recorded_cycle_SOH_prediction",
+  "training_rows": 132,
+  "testing_rows": 34,
+  "features": [
+    "cycle_number",
+    "soh_percent",
+    "previous_soh_percent",
+    "capacity_change_from_previous_Ah"
+  ],
+  "target": "target_soh_percent",
+  "mae_percentage_points": 0.4066696413814224,
+  "rmse_percentage_points": 0.6590927795457294,
+  "r2": 0.6965286564057055,
+  "note": "Single-battery chronological test; compare against persistence and XGBoost. Does not establish cross-battery generalization."
+}

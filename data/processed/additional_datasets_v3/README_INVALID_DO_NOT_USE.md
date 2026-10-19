@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb8bde6faf28715e219ff02d7c1889479b95de207987ac2dbacbf50528a5e7d1
-size 473
+# Invalid development output — do not report
+
+This directory is preserved for provenance. The first development run aligned
+the SOH target to the same row as the SOH input, causing direct target leakage
+and artificially near-zero errors. Do not use its SOH predictions or metrics.
+
+Use the corrected outputs in `additional_datasets_v3_1`, where each row's
+current-cycle features predict the next recorded SOH. No source datasets or
+earlier project results were modified.

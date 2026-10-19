@@ -1,3 +1,417 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c6a687b05982457d026f65a6ec11b7e32e30edf7832fbf00e898511914ee6b4d
-size 16113
+{
+  "title": "Non-algae local battery datasets and separate cell-held-out validation",
+  "created_at_utc": "2026-10-18T17:47:48.219593+00:00",
+  "algae_excluded": true,
+  "interpretation": "Algae excluded. NASA pooled metrics withheld after source quality/protocol review; only two protocol-group exploratory SOH results are shown. Oxford results remain exploratory. CALCE is catalogued but not scored.",
+  "validation_design": "Leave-one-cell-out within each dataset family. SOH features use the current and previous observations and predict the next recorded SOH. SOH is relative to the first valid observation. RUL is cycles/checkpoints to 70% of the first observed capacity, an explicit project comparison assumption; it is not a universal end-of-life rule.",
+  "scope": "Accelerated laboratory cells only; not field or EV pack validation.",
+  "nasa": {
+    "processed_cells": 34,
+    "source_quality_by_cell": {
+      "B0005": {
+        "status": "processed",
+        "discharge_events": 168,
+        "valid_positive_capacity_records": 168,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0006": {
+        "status": "processed",
+        "discharge_events": 168,
+        "valid_positive_capacity_records": 168,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0007": {
+        "status": "processed",
+        "discharge_events": 168,
+        "valid_positive_capacity_records": 168,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0018": {
+        "status": "processed",
+        "discharge_events": 132,
+        "valid_positive_capacity_records": 132,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0025": {
+        "status": "processed",
+        "discharge_events": 28,
+        "valid_positive_capacity_records": 28,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0026": {
+        "status": "processed",
+        "discharge_events": 28,
+        "valid_positive_capacity_records": 28,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0027": {
+        "status": "processed",
+        "discharge_events": 28,
+        "valid_positive_capacity_records": 28,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0028": {
+        "status": "processed",
+        "discharge_events": 28,
+        "valid_positive_capacity_records": 28,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0029": {
+        "status": "processed",
+        "discharge_events": 40,
+        "valid_positive_capacity_records": 40,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0030": {
+        "status": "processed",
+        "discharge_events": 40,
+        "valid_positive_capacity_records": 40,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0031": {
+        "status": "processed",
+        "discharge_events": 40,
+        "valid_positive_capacity_records": 40,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0032": {
+        "status": "processed",
+        "discharge_events": 40,
+        "valid_positive_capacity_records": 40,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0033": {
+        "status": "processed",
+        "discharge_events": 197,
+        "valid_positive_capacity_records": 197,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0034": {
+        "status": "processed",
+        "discharge_events": 197,
+        "valid_positive_capacity_records": 197,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0036": {
+        "status": "processed",
+        "discharge_events": 197,
+        "valid_positive_capacity_records": 197,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0038": {
+        "status": "processed",
+        "discharge_events": 47,
+        "valid_positive_capacity_records": 47,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0039": {
+        "status": "processed",
+        "discharge_events": 47,
+        "valid_positive_capacity_records": 47,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0040": {
+        "status": "processed",
+        "discharge_events": 47,
+        "valid_positive_capacity_records": 47,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0041": {
+        "status": "processed",
+        "discharge_events": 67,
+        "valid_positive_capacity_records": 67,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0042": {
+        "status": "processed",
+        "discharge_events": 112,
+        "valid_positive_capacity_records": 111,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0043": {
+        "status": "processed",
+        "discharge_events": 112,
+        "valid_positive_capacity_records": 111,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0044": {
+        "status": "processed",
+        "discharge_events": 112,
+        "valid_positive_capacity_records": 111,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0045": {
+        "status": "processed",
+        "discharge_events": 72,
+        "valid_positive_capacity_records": 70,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 2
+      },
+      "B0046": {
+        "status": "processed",
+        "discharge_events": 72,
+        "valid_positive_capacity_records": 69,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 3
+      },
+      "B0047": {
+        "status": "processed",
+        "discharge_events": 72,
+        "valid_positive_capacity_records": 69,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 3
+      },
+      "B0048": {
+        "status": "processed",
+        "discharge_events": 72,
+        "valid_positive_capacity_records": 69,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 3
+      },
+      "B0049": {
+        "status": "processed",
+        "discharge_events": 25,
+        "valid_positive_capacity_records": 24,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0050": {
+        "status": "processed",
+        "discharge_events": 25,
+        "valid_positive_capacity_records": 20,
+        "missing_capacity_records": 4,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0051": {
+        "status": "processed",
+        "discharge_events": 25,
+        "valid_positive_capacity_records": 24,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0052": {
+        "status": "processed",
+        "discharge_events": 25,
+        "valid_positive_capacity_records": 4,
+        "missing_capacity_records": 21,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0053": {
+        "status": "processed",
+        "discharge_events": 56,
+        "valid_positive_capacity_records": 55,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0054": {
+        "status": "processed",
+        "discharge_events": 103,
+        "valid_positive_capacity_records": 102,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 1
+      },
+      "B0055": {
+        "status": "processed",
+        "discharge_events": 102,
+        "valid_positive_capacity_records": 102,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      },
+      "B0056": {
+        "status": "processed",
+        "discharge_events": 102,
+        "valid_positive_capacity_records": 102,
+        "missing_capacity_records": 0,
+        "nonpositive_capacity_records_excluded_from_model_table": 0
+      }
+    },
+    "pooled_metrics_withheld": true,
+    "validation_status": "inventory parsed; broad cohort scoring withheld due to protocol variation and suspect first-capacity baselines",
+    "cohort_specific_exploratory_next_record_soh": {
+      "B0025-B0028": {
+        "persistence": 1.0966,
+        "linear_regression": 1.3283,
+        "xgboost": 0.9485,
+        "held_out_cells": 4,
+        "status": "exploratory; within-cohort LOBO only"
+      },
+      "B0029-B0032": {
+        "persistence": 0.7442,
+        "linear_regression": 0.6535,
+        "xgboost": 0.7625,
+        "held_out_cells": 4,
+        "status": "exploratory; within-cohort LOBO only"
+      }
+    }
+  },
+  "oxford": {
+    "processed_cells": 8,
+    "source_quality_by_cell": {
+      "Cell1": {
+        "status": "processed",
+        "characterization_checkpoints": 78,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell2": {
+        "status": "processed",
+        "characterization_checkpoints": 73,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell3": {
+        "status": "processed",
+        "characterization_checkpoints": 76,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell4": {
+        "status": "processed",
+        "characterization_checkpoints": 47,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell5": {
+        "status": "processed",
+        "characterization_checkpoints": 46,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell6": {
+        "status": "processed",
+        "characterization_checkpoints": 46,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell7": {
+        "status": "processed",
+        "characterization_checkpoints": 77,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      },
+      "Cell8": {
+        "status": "processed",
+        "characterization_checkpoints": 76,
+        "cycle_spacing": "nominally every 100 drive cycles; missing checkpoints retained as gaps"
+      }
+    },
+    "soh_pooled_macro_cell_metrics": {
+      "linear_regression": {
+        "macro_cell_mae": 0.29531186606258497,
+        "held_out_cells": 8,
+        "folds": 8
+      },
+      "persistence": {
+        "macro_cell_mae": 0.4520498287101882,
+        "held_out_cells": 8,
+        "folds": 8
+      },
+      "xgboost": {
+        "macro_cell_mae": 0.7340684659615802,
+        "held_out_cells": 8,
+        "folds": 8
+      }
+    },
+    "rul_pooled_macro_cell_metrics": {
+      "xgboost": {
+        "macro_cell_mae": 2159.4926607472885,
+        "held_out_cells": 2,
+        "folds": 2
+      }
+    },
+    "rul_status_by_cell": {
+      "Cell1": {
+        "status": "right_censored",
+        "last_soh_percent": 75.854593254061,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell2": {
+        "status": "threshold_crossed",
+        "first_crossing_cycle": 7400.0,
+        "threshold_capacity_Ah": 0.5143732759883091,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell3": {
+        "status": "right_censored",
+        "last_soh_percent": 76.97486324201381,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell4": {
+        "status": "right_censored",
+        "last_soh_percent": 79.1790054087706,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell5": {
+        "status": "threshold_crossed",
+        "first_crossing_cycle": 5000.0,
+        "threshold_capacity_Ah": 0.5147352495027785,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell6": {
+        "status": "right_censored",
+        "last_soh_percent": 79.01573362323433,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell7": {
+        "status": "right_censored",
+        "last_soh_percent": 79.97394141989302,
+        "threshold_soh_percent": 70.0
+      },
+      "Cell8": {
+        "status": "right_censored",
+        "last_soh_percent": 76.82978224324943,
+        "threshold_soh_percent": 70.0
+      }
+    }
+  },
+  "calce": {
+    "cs2_excel_workbooks": 232,
+    "cs2_identifiers": [
+      "CS2_3",
+      "CS2_33",
+      "CS2_34",
+      "CS2_35",
+      "CS2_36",
+      "CS2_37",
+      "CS2_38",
+      "CS2_9"
+    ],
+    "cs2_workbooks_with_statistics_sheets": 127,
+    "cs2_workbooks_without_statistics_sheets_or_parseable_statistics": 105,
+    "cs2_statistics_rows": 4015,
+    "naive_duplicate_cycle_index_count_across_workbooks": 3695,
+    "duplicate_timestamp_count_across_workbooks": 100,
+    "pl_unique_cells": [
+      "PL11",
+      "PL13"
+    ],
+    "pl_verified_duplicate_file_copies": 2,
+    "pl_cycle_data_status": "MATLAB table objects require a table-aware parser; scipy exposes these as opaque table handles.",
+    "cs2_status": "Workbook exports overlap and restart Cycle_Index; use Date_Time and session boundaries before forming cell trajectories."
+  },
+  "notes": [
+    "An earlier development run in additional_datasets_v3 aligned the SOH target to the current row and is invalid due to direct target leakage; only the corrected additional_datasets_v3_1 results should be used.",
+    "The existing v2 inference artifacts remain the four-cell NASA models; these additional results are a separate validation extension.",
+    "CALCE CS2 Statistics discharge capacity is cumulative in the observed workbooks, and workbook exports overlap with reset cycle indices. No artificial continuity or performance metric is inferred.",
+    "CALCE PL11/PL13 are represented by duplicate copies in two folders; duplicates are counted once. Their MATLAB table payloads are opaque to the installed SciPy reader.",
+    "Oxford capacity is derived from the magnitude of the minimum C1dc q in mAh, converted to Ah, following the source readme's units.",
+    "The naive 34-cell NASA first-observation-normalized metrics in v3.1 are superseded for interpretation: several cells show implausible SOH above 1000% from very low initial recorded capacity, and protocol/endpoint heterogeneity invalidates pooled scoring. Do not use those pooled metrics as validation results.",
+    "v3.2 displays NASA next-record SOH results only within B0025-B0028 and B0029-B0032, separately, 4 held-out cells per group. No NASA RUL extension is scored here."
+  ],
+  "version": "v3.2"
+}

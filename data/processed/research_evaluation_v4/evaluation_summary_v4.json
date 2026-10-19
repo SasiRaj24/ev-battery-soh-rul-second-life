@@ -1,3 +1,226 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:20d341fda8ce5097bafea54051772db96eb4f076400518b97ebbd904d2ba5bd4
-size 9393
+{
+  "version": "4.0.0-evaluation-addendum",
+  "created_at_utc": "2026-10-18T18:11:53.286907+00:00",
+  "summary_by_dataset_and_task": {
+    "NASA_B0005_B0018_next_discharge_SOH": {
+      "linear_regression": {
+        "macro_cell_mae": 0.5954525392424921,
+        "minimum_cell_mae": 0.3323653270735251,
+        "maximum_cell_mae": 1.0271477934967548,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0005": 0.3736250135541382,
+          "B0006": 1.0271477934967548,
+          "B0007": 0.3323653270735251,
+          "B0018": 0.6486720228455504
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "persistence": {
+        "macro_cell_mae": 0.5686399333430485,
+        "minimum_cell_mae": 0.3659306985874054,
+        "maximum_cell_mae": 0.7640267059802757,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0005": 0.4379670641139929,
+          "B0006": 0.70663526469052,
+          "B0007": 0.3659306985874054,
+          "B0018": 0.7640267059802757
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "xgboost": {
+        "macro_cell_mae": 1.2740930566019255,
+        "minimum_cell_mae": 0.4729003983738128,
+        "maximum_cell_mae": 3.180891530158352,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0005": 0.7744384335889986,
+          "B0006": 3.180891530158352,
+          "B0007": 0.4729003983738128,
+          "B0018": 0.6681418642865385
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      }
+    },
+    "NASA_complete_cell_RUL_to_1p4_Ah": {
+      "linear_regression": {
+        "macro_cell_mae": 1019.8251597286086,
+        "minimum_cell_mae": 25.46664150698004,
+        "maximum_cell_mae": 3007.316841766907,
+        "held_out_cells": 3,
+        "observed_cell_maes": {
+          "B0005": 25.46664150698004,
+          "B0006": 3007.316841766907,
+          "B0018": 26.69199591193876
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "recent_slope_extrapolation": {
+        "macro_cell_mae": 533.5681096039236,
+        "minimum_cell_mae": 26.208003061699984,
+        "maximum_cell_mae": 1540.59905461521,
+        "held_out_cells": 3,
+        "observed_cell_maes": {
+          "B0005": 1540.59905461521,
+          "B0006": 33.89727113486077,
+          "B0018": 26.208003061699984
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "xgboost": {
+        "macro_cell_mae": 11.50778539139334,
+        "minimum_cell_mae": 7.670248305356061,
+        "maximum_cell_mae": 15.060316795302976,
+        "held_out_cells": 3,
+        "observed_cell_maes": {
+          "B0005": 15.060316795302976,
+          "B0006": 7.670248305356061,
+          "B0018": 11.79279107352098
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      }
+    },
+    "NASA_B0025_B0026_B0027_B0028": {
+      "linear_regression": {
+        "macro_cell_mae": 1.328278818326389,
+        "minimum_cell_mae": 0.7713125567206501,
+        "maximum_cell_mae": 2.6044002743184347,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0025": 0.7713125567206501,
+          "B0026": 2.6044002743184347,
+          "B0027": 1.09625744818232,
+          "B0028": 0.8411449940841513
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "persistence": {
+        "macro_cell_mae": 1.09659837779388,
+        "minimum_cell_mae": 0.41112328117771074,
+        "maximum_cell_mae": 2.9702424955057185,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0025": 0.48092485643417365,
+          "B0026": 2.9702424955057185,
+          "B0027": 0.5241028780579166,
+          "B0028": 0.41112328117771074
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "xgboost": {
+        "macro_cell_mae": 0.9484766622205878,
+        "minimum_cell_mae": 0.4703867219576146,
+        "maximum_cell_mae": 1.7337355170362836,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0025": 1.0365594067508435,
+          "B0026": 1.7337355170362836,
+          "B0027": 0.5532250031376095,
+          "B0028": 0.4703867219576146
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      }
+    },
+    "NASA_B0029_B0030_B0031_B0032": {
+      "linear_regression": {
+        "macro_cell_mae": 0.6535143578469604,
+        "minimum_cell_mae": 0.47393693159478695,
+        "maximum_cell_mae": 0.7786021587604379,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0029": 0.47393693159478695,
+          "B0030": 0.7539566108400171,
+          "B0031": 0.7786021587604379,
+          "B0032": 0.6075617301925998
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "persistence": {
+        "macro_cell_mae": 0.7442159459418926,
+        "minimum_cell_mae": 0.6434446254643517,
+        "maximum_cell_mae": 0.7970704279094399,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0029": 0.6434446254643517,
+          "B0030": 0.7970704279094399,
+          "B0031": 0.7448742487402631,
+          "B0032": 0.7914744816535159
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "xgboost": {
+        "macro_cell_mae": 0.7624713239885941,
+        "minimum_cell_mae": 0.5574173249578337,
+        "maximum_cell_mae": 0.8725564941202576,
+        "held_out_cells": 4,
+        "observed_cell_maes": {
+          "B0029": 0.5574173249578337,
+          "B0030": 0.8725564941202576,
+          "B0031": 0.8647884446371836,
+          "B0032": 0.7551230322391016
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      }
+    },
+    "Oxford_next_characterization_checkpoint_SOH": {
+      "linear_regression": {
+        "macro_cell_mae": 0.29531186606258497,
+        "minimum_cell_mae": 0.1515182007912767,
+        "maximum_cell_mae": 0.5922445781710275,
+        "held_out_cells": 8,
+        "observed_cell_maes": {
+          "Cell1": 0.2366860579531139,
+          "Cell2": 0.5922445781710275,
+          "Cell3": 0.1515182007912767,
+          "Cell4": 0.187696601536357,
+          "Cell5": 0.5853772655861398,
+          "Cell6": 0.2080899996132081,
+          "Cell7": 0.2285672089167519,
+          "Cell8": 0.1723150159328047
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "persistence": {
+        "macro_cell_mae": 0.4520498287101881,
+        "minimum_cell_mae": 0.2627843235605102,
+        "maximum_cell_mae": 0.8351109129400417,
+        "held_out_cells": 8,
+        "observed_cell_maes": {
+          "Cell1": 0.3139012674468945,
+          "Cell2": 0.7000463537334025,
+          "Cell3": 0.3026109819188545,
+          "Cell4": 0.4380052680985007,
+          "Cell5": 0.8351109129400417,
+          "Cell6": 0.4538646064950649,
+          "Cell7": 0.2627843235605102,
+          "Cell8": 0.3100749154882359
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      },
+      "xgboost": {
+        "macro_cell_mae": 0.7340684659615802,
+        "minimum_cell_mae": 0.2024741373889459,
+        "maximum_cell_mae": 2.8708126228233977,
+        "held_out_cells": 8,
+        "observed_cell_maes": {
+          "Cell1": 0.2424055879900938,
+          "Cell2": 0.4733294916152787,
+          "Cell3": 0.2105674468713144,
+          "Cell4": 0.2847584450041309,
+          "Cell5": 0.5653237840728742,
+          "Cell6": 1.0228762119266055,
+          "Cell7": 2.8708126228233977,
+          "Cell8": 0.2024741373889459
+        },
+        "uncertainty_note": "Observed held-out-cell spread only; too few independent cells for a dependable inferential interval."
+      }
+    }
+  },
+  "independent_unit": "held-out cell/battery; cycles are repeated measures, not independent cells",
+  "confidence_intervals": "not computed; independent-cell counts are too small for a dependable inferential interval",
+  "cross_dataset_transfer": "not scored because cycle/time features and measurement protocols are not harmonized",
+  "right_censoring": {
+    "B0007": "retained as right-censored; excluded from complete-case RUL metric"
+  }
+}

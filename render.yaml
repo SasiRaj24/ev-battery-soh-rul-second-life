@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ev-battery-ai-dashboard
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/v2/health
+    autoDeployTrigger: commit

@@ -1,3 +1,89 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6806cd34a758a281c7883621aeb4904e2ebffeb85faef3273162dacaae02d05a
-size 3386
+{
+  "title": "NASA cell RUL prediction, exploratory v2",
+  "created_at_utc": "2026-10-18T17:21:43.566064+00:00",
+  "task": "Remaining recorded discharge cycles until the first measured capacity at or below 1.4 Ah.",
+  "eol_threshold_capacity_Ah": 1.4,
+  "validation": "Leave-one-battery-out across threshold-crossing cells only; each fold trains on the other complete trajectories.",
+  "batteries": [
+    "B0005",
+    "B0006",
+    "B0007",
+    "B0018"
+  ],
+  "eligible_complete_trajectory_cells": [
+    "B0005",
+    "B0006",
+    "B0018"
+  ],
+  "features": [
+    "cycle_number",
+    "ambient_temperature_C",
+    "discharge_capacity_Ah",
+    "soh_percent",
+    "previous_soh_percent",
+    "capacity_change_from_previous_Ah"
+  ],
+  "pooled_metrics_cycles": {
+    "cycle_index_oracle_control": {
+      "mae_cycles": 0.0,
+      "rmse_cycles": 0.0
+    },
+    "linear_regression": {
+      "mae_cycles": 1007.6540062964559,
+      "rmse_cycles": 1737.5274674163722
+    },
+    "recent_slope_extrapolation": {
+      "mae_cycles": 589.7570072650194,
+      "rmse_cycles": 9163.393290019714
+    },
+    "xgboost": {
+      "mae_cycles": 11.670652569067187,
+      "rmse_cycles": 13.648019855025108
+    }
+  },
+  "fold_metrics_file": "nasa_rul_v2_fold_metrics.csv",
+  "predictions_file": "nasa_rul_v2_predictions.csv",
+  "battery_status": {
+    "B0005": {
+      "valid_discharge_records": 168,
+      "first_capacity_Ah": 1.8564874208181574,
+      "last_capacity_Ah": 1.3250793286429356,
+      "eol_threshold_crossed": true,
+      "first_eol_discharge_index": 125,
+      "censoring_note": null
+    },
+    "B0006": {
+      "valid_discharge_records": 168,
+      "first_capacity_Ah": 2.035337591005598,
+      "last_capacity_Ah": 1.1856752327929356,
+      "eol_threshold_crossed": true,
+      "first_eol_discharge_index": 109,
+      "censoring_note": null
+    },
+    "B0007": {
+      "valid_discharge_records": 168,
+      "first_capacity_Ah": 1.89105229539079,
+      "last_capacity_Ah": 1.4324552720625434,
+      "eol_threshold_crossed": false,
+      "first_eol_discharge_index": null,
+      "censoring_note": "Right-censored: did not reach 1.4 Ah during 168 observed discharges; true RUL is unknown and exceeds the observed follow-up."
+    },
+    "B0018": {
+      "valid_discharge_records": 132,
+      "first_capacity_Ah": 1.8550045207910817,
+      "last_capacity_Ah": 1.341051440640485,
+      "eol_threshold_crossed": true,
+      "first_eol_discharge_index": 97,
+      "censoring_note": null
+    }
+  },
+  "limitations": [
+    "Only three cells cross the 1.4 Ah threshold; each fold has two independent training cells, regardless of row count.",
+    "B0007 is right-censored and excluded from RUL model scoring and training; its true threshold-crossing RUL is unknown.",
+    "The threshold is the dataset's 1.4 Ah / 70% of 2 Ah nominal-capacity criterion, not a universal vehicle or second-life EOL rule.",
+    "Discharge cutoff voltages differ among batteries and affect measured capacity.",
+    "Row-level scores are correlated within a cell; pooled errors do not represent independent-cell sample size.",
+    "The recent-slope estimate is a hand-built baseline and may fail under nonlinear or non-monotonic degradation.",
+    "This is cell-level accelerated laboratory research, not EV pack or field validation."
+  ]
+}

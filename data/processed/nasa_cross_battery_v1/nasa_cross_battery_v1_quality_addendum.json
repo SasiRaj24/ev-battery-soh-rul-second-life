@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1e328ba8f8270bf2af91169003c851f643a2f41870bf7becfa13401e062f7b62
-size 1071
+{
+  "valid_discharge_records_by_battery": {
+    "B0005": 168,
+    "B0006": 168,
+    "B0007": 168,
+    "B0018": 132
+  },
+  "first_discharge_capacity_Ah_by_battery": {
+    "B0005": 1.8564874208181574,
+    "B0006": 2.035337591005598,
+    "B0007": 1.8910522953907902,
+    "B0018": 1.8550045207910817
+  },
+  "relative_soh_max_percent_by_battery": {
+    "B0005": 100.0,
+    "B0006": 100.0,
+    "B0007": 100.0,
+    "B0018": 100.0
+  },
+  "basis": "Valid discharge counts are supervised rows plus two boundary records (first record lacks a previous-cycle feature; last record lacks a next-cycle target). Initial capacity is reconstructed from the first supervised record's capacity and SOH, both relative to the first valid discharge. The first discharge defines 100% relative SOH.",
+  "note": "Corrected valid discharge counts, first discharge capacities, and maximum relative SOH. The original summary had an off-by-one count and used the first supervised row as the first discharge. These summary field errors do not affect input/target rows, predictions, or model metrics."
+}

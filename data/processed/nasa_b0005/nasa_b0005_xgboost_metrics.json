@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d5df2ac59373f792d7ea1bf0d01afa8d73fefe0d6753de5922e8b8cede0cea9
-size 679
+{
+  "model": "XGBRegressor",
+  "xgboost_version": "3.4.1",
+  "battery_id": "B0005",
+  "task": "next_recorded_cycle_SOH_prediction",
+  "training_rows": 132,
+  "testing_rows": 34,
+  "features": [
+    "cycle_number",
+    "ambient_temperature_C",
+    "discharge_capacity_Ah",
+    "soh_percent",
+    "previous_capacity_Ah",
+    "previous_soh_percent",
+    "capacity_change_from_previous_Ah"
+  ],
+  "target": "target_soh_percent",
+  "mae_percentage_points": 3.0715263572426705,
+  "rmse_percentage_points": 3.2856697015436866,
+  "r2": -6.54175440492869,
+  "note": "Single-battery chronological test. Results do not establish generalization to other EV batteries."
+}

@@ -1,3 +1,291 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8ee16a2bfbcdedacea11aea59db8308ada83ee0cc5384b70b1af59f921f56534
-size 12551
+{
+  "version": "1.2.0-harmonized-comparison",
+  "created_at_utc": "2026-10-18T18:44:27.413494+00:00",
+  "question": "Does cell-balanced multi-source training improve held-cell SOH or harmonized relative-endpoint RUL versus family-only baselines?",
+  "included_cells_by_family": {
+    "NASA_core": [
+      "B0005",
+      "B0006",
+      "B0007",
+      "B0018"
+    ],
+    "NASA_group_B0025_B0028": [
+      "B0025",
+      "B0026",
+      "B0027",
+      "B0028"
+    ],
+    "NASA_group_B0029_B0032": [
+      "B0029",
+      "B0030",
+      "B0031",
+      "B0032"
+    ],
+    "Oxford": [
+      "Cell1",
+      "Cell2",
+      "Cell3",
+      "Cell4",
+      "Cell5",
+      "Cell6",
+      "Cell7",
+      "Cell8"
+    ]
+  },
+  "excluded_sources": {
+    "CALCE_CS2": {
+      "CS2_3": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_9": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_33": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_34": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_35": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_36": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_37": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required.",
+      "CS2_38": "Not scored: overlapping workbook sessions have not been reconciled into quality-controlled per-cycle capacity trajectories. A preliminary raw-channel reconstruction produced anomalous candidates (~0.05 to >5 Ah) against the ~1 Ah trace scale; prior dataset audit had already flagged session reconciliation as required."
+    },
+    "CALCE_PL": {
+      "PL11": "MATLAB MCOS table objects remain opaque to the installed parser.",
+      "PL13": "MATLAB MCOS table objects remain opaque to the installed parser."
+    },
+    "other_NASA_cells": "Not included in this comparison; heterogeneous protocols/baselines are not quality-cleared by the reviewed cohorts."
+  },
+  "calce_cs2_reconstruction_audit": {
+    "status": "excluded_pending_session_aware_reconstruction",
+    "reason": "Preliminary raw-channel reconstruction showed implausible tail candidates; prior data audit flagged overlapping session exports.",
+    "candidate_capacity_observed_range_Ah": [
+      0.05,
+      5.75
+    ],
+    "interpretation": "This is a quality-control diagnostic, not a scored CALCE result."
+  },
+  "harmonization": {
+    "SOH_features": [
+      "current_soh_percent",
+      "previous_soh_percent",
+      "previous_soh_change_pp_per_100_cycles",
+      "previous_gap_cycles"
+    ],
+    "RUL_features": [
+      "current_soh_percent",
+      "previous_soh_percent",
+      "recent_slope_pp_per_100_cycles",
+      "previous_gap_cycles"
+    ],
+    "SOH": "100 * capacity / first measured capacity of that cell",
+    "next_record_target": "next measured SOH change per 100 cycles; scaled by the scheduled next observation interval when reconstructing next SOH",
+    "excluded_shared_features": [
+      "absolute capacity in Ah (cell capacities differ)",
+      "ambient temperature (field meaning differs across source formats/protocols)",
+      "absolute cycle count as a shared feature (cycle/time scales differ)"
+    ]
+  },
+  "validation_design": {
+    "independent_unit": "complete held-out cell; no rows from the held-out cell are used in model fitting",
+    "multi_dataset_weights": "equal total weight per source family, equal weight per cell in family, equal weight per row in cell",
+    "within_family_weights": "equal weight per cell",
+    "external_family": "train on other families only; no same-family examples in training",
+    "uncertainty": "cell-level errors and observed ranges only; no inferential confidence intervals"
+  },
+  "RUL": {
+    "endpoint": "first observed capacity <= 70% of that cell's first observed capacity",
+    "censoring_status_by_cell": {
+      "B0005": {
+        "status": "threshold_crossed",
+        "eol_cycle": 162.0,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.2995411945727102
+      },
+      "B0006": {
+        "status": "threshold_crossed",
+        "eol_cycle": 102.0,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.4247363137039184
+      },
+      "B0007": {
+        "status": "right_censored",
+        "last_soh_percent": 75.74910940083355,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.323736606773553
+      },
+      "B0018": {
+        "status": "right_censored",
+        "last_soh_percent": 72.29370201580872,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.298503164553757
+      },
+      "B0025": {
+        "status": "right_censored",
+        "last_soh_percent": 95.71079555374561,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.2929078140697012
+      },
+      "B0026": {
+        "status": "right_censored",
+        "last_soh_percent": 97.5460466667801,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.2692753012708928
+      },
+      "B0027": {
+        "status": "right_censored",
+        "last_soh_percent": 97.08139516350145,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.2763154419504554
+      },
+      "B0028": {
+        "status": "right_censored",
+        "last_soh_percent": 95.15421152010136,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.2632793404070515
+      },
+      "B0029": {
+        "status": "right_censored",
+        "last_soh_percent": 94.96747266576908,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.188255132544034
+      },
+      "B0030": {
+        "status": "right_censored",
+        "last_soh_percent": 94.36677369628562,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.1592494267322782
+      },
+      "B0031": {
+        "status": "right_censored",
+        "last_soh_percent": 100.03741492249006,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.166672635976804
+      },
+      "B0032": {
+        "status": "right_censored",
+        "last_soh_percent": 95.94900146588859,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 1.1934048751458497
+      },
+      "Cell1": {
+        "status": "right_censored",
+        "last_soh_percent": 75.854593254061,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5173776447435245
+      },
+      "Cell2": {
+        "status": "threshold_crossed",
+        "eol_cycle": 7400.0,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.514373275988309
+      },
+      "Cell3": {
+        "status": "right_censored",
+        "last_soh_percent": 76.97486324201381,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5145837165790335
+      },
+      "Cell4": {
+        "status": "right_censored",
+        "last_soh_percent": 79.1790054087706,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5138529311256829
+      },
+      "Cell5": {
+        "status": "threshold_crossed",
+        "eol_cycle": 5000.0,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5147352495027785
+      },
+      "Cell6": {
+        "status": "right_censored",
+        "last_soh_percent": 79.01573362323433,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5129563288158605
+      },
+      "Cell7": {
+        "status": "right_censored",
+        "last_soh_percent": 79.97394141989302,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5101222507198364
+      },
+      "Cell8": {
+        "status": "right_censored",
+        "last_soh_percent": 76.82978224324943,
+        "endpoint_relative_soh_percent": 70.0,
+        "endpoint_capacity_Ah": 0.5092695656143371
+      }
+    },
+    "limit": "This comparative endpoint does not replace the deployed NASA model's absolute 1.4 Ah endpoint."
+  },
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "openpyxl": "3.1.5"
+  },
+  "source_manifest": [
+    {
+      "path": "data\\nasa\\B0005.mat",
+      "bytes": 15956874,
+      "sha256": "0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0"
+    },
+    {
+      "path": "data\\nasa\\B0006.mat",
+      "bytes": 16028159,
+      "sha256": "fa818ab4db5db8ab21e910b6dd6c3e20d3761bb9672089e1a4de8f96074616c5"
+    },
+    {
+      "path": "data\\nasa\\B0007.mat",
+      "bytes": 16049460,
+      "sha256": "d022afa086efaf54ab5b63f05220f5be178c8027e2fa8d68589db0e85a441a3b"
+    },
+    {
+      "path": "data\\nasa\\B0018.mat",
+      "bytes": 8502218,
+      "sha256": "d1e6c923a43ea1c9666b3a90bbb521757a067fd60b4d17dbfaa49c50b179da69"
+    },
+    {
+      "path": "data\\nasa\\B0025.mat",
+      "bytes": 2753821,
+      "sha256": "38894747a9c79d719e95a2e6c42be18017e29c522b760056b680a65105d1a15f"
+    },
+    {
+      "path": "data\\nasa\\B0026.mat",
+      "bytes": 2764789,
+      "sha256": "ca5eee0b33d8070e3a6c254696444a0c65a12f40587fcfc8db858640b2e6e36c"
+    },
+    {
+      "path": "data\\nasa\\B0027.mat",
+      "bytes": 2783781,
+      "sha256": "de2b4045ef20a6900885e169f3540664bb637f5f94b41fb4333c31d759237209"
+    },
+    {
+      "path": "data\\nasa\\B0028.mat",
+      "bytes": 2820196,
+      "sha256": "050c377e85a2c41165f2e2e0d22bf9575385dd8c835a713c27edb65af6bb25e8"
+    },
+    {
+      "path": "data\\nasa\\B0029.mat",
+      "bytes": 2879840,
+      "sha256": "da9c63ac7b8a10d2354ff53fec9be23f4194352e667de5c503b069f7d267ebb2"
+    },
+    {
+      "path": "data\\nasa\\B0030.mat",
+      "bytes": 2880995,
+      "sha256": "c29a910256812449aa6090031471a57440e2e7bc827bd2c822b0d3135485cc99"
+    },
+    {
+      "path": "data\\nasa\\B0031.mat",
+      "bytes": 2882510,
+      "sha256": "c47cb3a5ef47ef4de26fcc80c2173fec24a139f6c305852fccee603cd6c4bcec"
+    },
+    {
+      "path": "data\\nasa\\B0032.mat",
+      "bytes": 2918592,
+      "sha256": "bd146cad3a18f9e8d42d05014c90e7bcde7abc7ccc89bdd46e5655604c61bc0f"
+    },
+    {
+      "path": "data\\oxford\\Oxford_Battery_Degradation_Dataset_1.mat",
+      "bytes": 266164290,
+      "sha256": "a8f0b928f4ea77d7ba98b97194b78cc77336f2338fee8b57573d043f0cf26781"
+    }
+  ],
+  "scope": "Laboratory cells only; no EV pack or field validation is claimed."
+}

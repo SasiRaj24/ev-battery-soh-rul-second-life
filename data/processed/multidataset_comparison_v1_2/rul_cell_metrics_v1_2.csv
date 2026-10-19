@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ea714d735236100af06ad2996c03bde1b43ff066493e212434561b8dedc1a40c
-size 1596
+held_out_battery,dataset_family,strategy,mae_rul_cycles,rmse_rul_cycles,test_records,training_cells,training_families
+B0005,NASA_core,multi_dataset_ridge,1058.5047226528836,1167.0034970088404,161,3,NASA_core;Oxford
+B0005,NASA_core,external_family_ridge,2401.9656866523846,3181.54887998962,161,2,Oxford
+B0005,NASA_core,multi_dataset_xgboost,1478.4241943359375,1479.1545214743,161,3,NASA_core;Oxford
+B0005,NASA_core,external_family_xgboost,2997.22607421875,2997.586385740491,161,2,Oxford
+B0006,NASA_core,multi_dataset_ridge,962.0633380202493,1044.4905432467988,101,3,NASA_core;Oxford
+B0006,NASA_core,external_family_ridge,2122.6827711730984,4210.705827721721,101,2,Oxford
+B0006,NASA_core,multi_dataset_xgboost,1529.783447265625,1530.0612391430284,101,3,NASA_core;Oxford
+B0006,NASA_core,external_family_xgboost,3027.22607421875,3027.3664635174027,101,2,Oxford
+Cell2,Oxford,multi_dataset_ridge,2187.442623003947,2709.2845040762572,69,3,NASA_core;Oxford
+Cell2,Oxford,external_family_ridge,3547.4647952942964,4151.798624752279,69,2,NASA_core
+Cell2,Oxford,multi_dataset_xgboost,2580.390819604846,3178.085222412709,69,3,NASA_core;Oxford
+Cell2,Oxford,external_family_xgboost,3549.8578764321146,4160.715865963228,69,2,NASA_core
+Cell5,Oxford,multi_dataset_ridge,1101.4976932840705,1325.0914875387823,45,3,NASA_core;Oxford
+Cell5,Oxford,external_family_ridge,2453.617753927794,2829.73617874849,45,2,NASA_core
+Cell5,Oxford,multi_dataset_xgboost,1324.2569037543403,1580.7241183755073,45,3,NASA_core;Oxford
+Cell5,Oxford,external_family_xgboost,2464.487004767524,2843.484683007989,45,2,NASA_core

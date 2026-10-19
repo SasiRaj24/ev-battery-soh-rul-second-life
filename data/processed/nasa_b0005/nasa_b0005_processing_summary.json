@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27541bb9c7e649863a88a447d30ebe8eb537a1c5c98d554b0ae8ad252a977fab
-size 815
+{
+  "dataset": "NASA Battery B0005",
+  "source_file": "data\\nasa\\B0005.mat",
+  "processed_at_utc": "2026-10-18T15:38:01.183261+00:00",
+  "method": "SOH (%) = discharge capacity / first recorded discharge capacity * 100",
+  "soh_reference_capacity_Ah": 1.8564874208181574,
+  "valid_discharge_events": 168,
+  "first_discharge_capacity_Ah": 1.8564874208181574,
+  "last_discharge_capacity_Ah": 1.3250793286429356,
+  "last_recorded_soh_percent": 71.37561578838873,
+  "capacity_decline_percent": 28.62438421161127,
+  "rul_label_created": false,
+  "notes": [
+    "Original MAT file is read only.",
+    "SOH uses the first recorded discharge capacity as its baseline.",
+    "This baseline is not necessarily the manufacturer's rated capacity.",
+    "RUL is not calculated in this processing step."
+  ]
+}
