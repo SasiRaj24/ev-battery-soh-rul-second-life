@@ -65,6 +65,61 @@ button { -webkit-tap-highlight-color: transparent; }
 .tabs button { background: transparent; border: 0; color: #697993; padding: 12px 14px; font-size: 13px; font-weight: 650; cursor: pointer; border-bottom: 3px solid transparent; transition: color .18s, background .18s; }
 .tabs button:hover { color: #3159e5; background: #edf1ff; }
 .tabs button.tab-active { color: #3159e5; border-color: var(--voltage); }
+.secondary-button { border: 1px solid #cbd6e2; border-radius: 7px; background: #fff; color: #2d4671; padding: 11px 14px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.secondary-button:hover:not(:disabled) { border-color: #4169f5; background: #f4f6ff; }
+.secondary-button:disabled { cursor: not-allowed; opacity: .5; }
+.text-button { border: 0; background: transparent; color: #5b6c83; font-weight: 650; cursor: pointer; padding: 10px 12px; }
+.learning-page, .learning-record-list { display: grid; gap: 14px; }
+.learning-summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.learning-log-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.learning-evaluation { display: grid; gap: 14px; }
+.learning-evaluation h2 { margin: 6px 0 0; }
+.learning-evaluation > div > p { max-width: 1000px; color: #657982; font-size: 13px; line-height: 1.6; margin: 8px 0 0; }
+.learning-evaluation-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+.evaluation-stat { display: grid; gap: 6px; padding: 12px; border: 1px solid #e5eaf2; border-radius: 7px; color: #718099; font-size: 11px; }
+.evaluation-stat b { color: #2b3c61; font-size: 18px; }
+.learning-family-scores { display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid #e6ebf1; }
+.learning-family-scores > div:not(.kicker) { display: flex; justify-content: space-between; gap: 12px; padding: 9px 11px; border-radius: 7px; background: #f7f9fc; color: #687690; font-size: 11px; }
+.learning-family-scores b { color: #2b3c61; font-size: 12px; }
+.learning-summary h2, .empty-learning h2, .learning-record h2 { margin-top: 6px; }
+.learning-summary p, .empty-learning p, .learning-page .dataset-method-note p { color: #657982; font-size: 13px; line-height: 1.6; margin: 8px 0 0; }
+.empty-learning { padding: 28px; }
+.learning-notice { border: 1px solid #b5ddc6; border-radius: 8px; padding: 12px 15px; background: #f0faf4; color: #286145; font-size: 13px; }
+.tracking-panel { margin: 14px 0; }
+.tracking-panel > p, .followup-form-wrap > p { color: #617780; font-size: 12px; line-height: 1.6; margin: 8px 0 0; }
+.tracking-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; margin-top: 15px; }
+.tracking-grid label, .followup-form label { display: grid; gap: 6px; color: #2b3c61; font-size: 12px; font-weight: 700; }
+.tracking-grid label span { color: #718099; font-weight: 500; }
+.tracking-grid input, .tracking-grid textarea, .followup-form input, .followup-form select, .followup-form textarea { width: 100%; min-height: 43px; border: 1px solid #cedadd; border-radius: 7px; background: #fff; color: #1d3741; padding: 9px 11px; font: 500 14px "Segoe UI", sans-serif; }
+.tracking-grid textarea { min-height: 72px; resize: vertical; }
+.followup-form textarea { min-height: 74px; resize: vertical; }
+.tracking-wide, .followup-provenance, .followup-confirm { grid-column: 1 / -1; }
+.save-prediction-panel { display: flex; justify-content: space-between; align-items: center; gap: 18px; border-color: #c7d5ff; background: linear-gradient(120deg, #f5f7ff, #fff 70%); }
+.save-prediction-panel p { max-width: 780px; color: #657982; font-size: 12px; line-height: 1.55; margin: 7px 0 0; }
+.save-prediction-panel .primary-button { flex: none; }
+.learning-record { display: grid; gap: 14px; }
+.learning-record-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.learning-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.learning-facts span { display: flex; flex-direction: column; gap: 5px; padding: 10px; border: 1px solid #e5eaf2; border-radius: 7px; color: #718099; font-size: 10px; }
+.learning-facts b { color: #2b3c61; font-size: 13px; }
+.learning-provenance { color: #657982; font-size: 12px; line-height: 1.5; margin: 0; overflow-wrap: anywhere; }
+.learning-provenance b { color: #344663; }
+.followup-list { display: grid; gap: 9px; border-top: 1px solid #e6ebf1; padding-top: 13px; }
+.followup-row { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 11px 12px; border-radius: 7px; background: #f7f9fc; }
+.followup-row > div { display: grid; gap: 4px; }
+.followup-row b { color: #2b3c61; font-size: 12px; }
+.followup-row span, .followup-row small { color: #687690; font-size: 11px; line-height: 1.45; }
+.followup-outcome { text-align: right; }
+.assessment-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 11px 12px; border-radius: 7px; background: #f7f9fc; }
+.assessment-row > div { display: grid; gap: 4px; }
+.assessment-row b { color: #2b3c61; font-size: 12px; text-transform: capitalize; }
+.assessment-row span, .assessment-row small { color: #687690; font-size: 11px; line-height: 1.45; }
+.assessment-row .assessment-scope { flex: 0 0 auto; color: #916623; }
+.followup-form-wrap { display: grid; gap: 10px; padding-top: 12px; border-top: 1px solid #e6ebf1; }
+.followup-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.followup-confirm { display: flex !important; grid-column: 1 / -1; align-items: flex-start; grid-template-columns: 17px 1fr; gap: 9px !important; font-weight: 500 !important; line-height: 1.5; }
+.followup-confirm input { width: 17px; min-height: 17px; margin: 1px 0 0; accent-color: #4169f5; }
+.followup-actions { display: flex; align-items: center; gap: 8px; }
 .metric-grid, .result-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
 .result-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .metric-card, .panel { background: var(--paper); border: 1px solid #e0e8ea; border-radius: 11px; box-shadow: var(--shadow); }
@@ -119,6 +174,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .analysis-stack { display: grid; gap: 14px; margin-top: 14px; }
 .chart-panel { min-height: 320px; }
 .chart-box { height: 250px; margin-top: 10px; }
+.chart-loading { display: grid; place-items: center; color: #718099; font-size: 13px; }
 .analysis-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 14px; }
 .explanation-panel h2, .recommendation-panel h2 { margin-top: 7px; }
 .contrib-list { margin-top: 13px; }
@@ -274,6 +330,13 @@ footer { font: 750 9px ui-monospace, Consolas, monospace; letter-spacing: .7px; 
   .upload-form { justify-content: flex-start; flex-wrap: wrap; }
   .file-name { max-width: 110px; }
   .parameter-form { grid-template-columns: 1fr; gap: 12px; }
+  .tracking-grid, .followup-form { grid-template-columns: 1fr; }
+  .tracking-wide, .followup-provenance, .followup-confirm { grid-column: auto; }
+  .learning-summary, .save-prediction-panel, .learning-record-heading { align-items: flex-start; flex-direction: column; }
+  .learning-evaluation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .learning-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .followup-row, .assessment-row { align-items: flex-start; flex-direction: column; }
+  .followup-outcome { text-align: left; }
   .parameter-form .primary-button { width: 100%; }
   .parameter-form label { font-size: 13px; }
   .parameter-form input, .parameter-form select { font-size: 16px; }

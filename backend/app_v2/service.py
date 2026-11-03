@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import hashlib
 import os
+import copy
+from functools import lru_cache
 from io import StringIO
 from pathlib import Path
 
@@ -42,12 +44,30 @@ _loaded_model_paths: tuple[Path, Path] | None = None
 _source_soh_models: dict[str, tuple[Path, object]] = {}
 
 
+@lru_cache(maxsize=64)
+def _read_json_cached(path_text: str, modified_ns: int, size: int) -> dict:
+    return json.loads(Path(path_text).read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=8)
+def _read_csv_cached(path_text: str, modified_ns: int, size: int) -> pd.DataFrame:
+    return pd.read_csv(path_text)
+
+
 def _json_file(path: Path, message: str) -> dict:
-    if not path.is_file():
-        raise HTTPException(status_code=503, detail=message)
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        stat = path.stat()
+        value = _read_json_cached(str(path.resolve()), stat.st_mtime_ns, stat.st_size)
+        return copy.deepcopy(value)
     except (OSError, json.JSONDecodeError) as exc:
+        raise HTTPException(status_code=503, detail=message) from exc
+
+
+def _csv_file(path: Path, message: str) -> pd.DataFrame:
+    try:
+        stat = path.stat()
+        return _read_csv_cached(str(path.resolve()), stat.st_mtime_ns, stat.st_size).copy(deep=True)
+    except (OSError, pd.errors.ParserError, pd.errors.EmptyDataError) as exc:
         raise HTTPException(status_code=503, detail=message) from exc
 
 
@@ -186,7 +206,7 @@ def rul_validation() -> dict:
     }
     if not RUL_FOLDS_PATH.is_file() or not RUL_PREDICTIONS_PATH.is_file():
         raise HTTPException(status_code=503, detail="RUL validation detail files are unavailable")
-    folds = pd.read_csv(RUL_FOLDS_PATH)
+    folds = _csv_file(RUL_FOLDS_PATH, "RUL validation fold metrics could not be read")
     folds = folds[folds["model"] != "cycle_index_oracle_control"]
     summary["fold_metrics"] = folds.to_dict(orient="records")
     return summary
