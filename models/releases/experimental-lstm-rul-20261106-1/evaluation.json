@@ -1,0 +1,57 @@
+{
+  "version": "experimental-lstm-rul-20261106-1",
+  "status": "experimental_not_default",
+  "target": "cycles to first measured capacity <= 1.4 Ah",
+  "training_cells": [
+    "B0005",
+    "B0006",
+    "B0018"
+  ],
+  "right_censored_cells": [
+    "B0007"
+  ],
+  "sequence_length": 12,
+  "folds": [
+    {
+      "held_out_cell": "B0005",
+      "train_cells": [
+        "B0006",
+        "B0018"
+      ],
+      "sequence_length": 12,
+      "n_test_windows": 113,
+      "mae_cycles": 36.509212493896484,
+      "rmse_cycles": 44.71019828914526
+    },
+    {
+      "held_out_cell": "B0006",
+      "train_cells": [
+        "B0005",
+        "B0018"
+      ],
+      "sequence_length": 12,
+      "n_test_windows": 97,
+      "mae_cycles": 28.69843292236328,
+      "rmse_cycles": 34.901294271085064
+    },
+    {
+      "held_out_cell": "B0018",
+      "train_cells": [
+        "B0005",
+        "B0006"
+      ],
+      "sequence_length": 12,
+      "n_test_windows": 85,
+      "mae_cycles": 26.19244384765625,
+      "rmse_cycles": 31.97590588441407
+    }
+  ],
+  "macro_cell_mae_cycles": 30.46669642130534,
+  "macro_cell_rmse_cycles": 37.19579948154813,
+  "limitations": [
+    "Only three complete independent NASA cell trajectories; each fold trains on two cells.",
+    "One fixed seed and a small cohort; results are exploratory, not a robust model-selection claim.",
+    "B0007 is right-censored and excluded from standard supervised fitting.",
+    "Laboratory cell data do not validate field EV packs or second-life safety."
+  ]
+}

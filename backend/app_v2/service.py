@@ -42,6 +42,32 @@ _soh_model = None
 _rul_model = None
 _loaded_model_paths: tuple[Path, Path] | None = None
 _source_soh_models: dict[str, tuple[Path, object]] = {}
+_shap_explainers: dict[int, object] = {}
+
+
+def _tree_shap(model, features: pd.DataFrame, feature_names: list[str]) -> dict:
+    """Return local TreeSHAP attribution; fail closed if the installed SHAP stack is incompatible."""
+    try:
+        import shap
+        key = id(model)
+        explainer = _shap_explainers.get(key)
+        if explainer is None:
+            explainer = shap.TreeExplainer(model)
+            _shap_explainers[key] = explainer
+        explanation = explainer(features[feature_names])
+        values = np.asarray(explanation.values, dtype=float).reshape(-1)
+        base = float(np.asarray(explanation.base_values, dtype=float).reshape(-1)[0])
+        return {
+            "method": "TreeSHAP",
+            "base_value": base,
+            "feature_attributions": [
+                {"feature": name, "value": float(features.iloc[0][name]), "shap_value": float(value)}
+                for name, value in sorted(zip(feature_names, values), key=lambda pair: abs(pair[1]), reverse=True)
+            ],
+            "interpretation": "Local additive attribution for this model output; associations are not causal effects.",
+        }
+    except Exception as exc:
+        return {"method": "TreeSHAP", "status": "unavailable", "reason": type(exc).__name__, "feature_attributions": []}
 
 
 @lru_cache(maxsize=64)
@@ -342,6 +368,7 @@ def analyze_history(
         "persistence_comparator_percent": persistence_soh,
         "model_minus_persistence_percentage_points": predicted_soh - persistence_soh,
     }
+    rul_shap = _tree_shap(rul_model, rul_input, RUL_FEATURES)
 
     rul_input = featured.iloc[[-1]][RUL_FEATURES]
     current_capacity = float(current["discharge_capacity_Ah"])
@@ -403,6 +430,7 @@ def analyze_history(
             "confidence": "low; three complete NASA cells in held-out validation",
             "prediction_interval": None,
             "feature_importance_global_not_local": ranked_importance,
+            "local_explanation": rul_shap,
             "limitations": [
                 "RUL is tied to this dataset's 1.4 Ah threshold and discharge protocol.",
                 "The RUL model was trained on only B0005, B0006, and B0018; B0007 did not cross the threshold and was right-censored.",
@@ -548,6 +576,7 @@ def analyze_harmonized_parameters(
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
         raise HTTPException(status_code=503, detail=f"Training-range guard is unavailable for {source}") from exc
     prediction = float(np.clip(raw_prediction, 0.0, 100.0)) if supported_delta else None
+    local_shap = _tree_shap(model, features, list(entry["feature_order"])) if "xgb" in str(entry.get("estimator", "")).lower() else None
     validation = entry["validation"]
     persistence_mae = float(validation["persistence_macro_cell_mae_soh_pp"])
     model_mae = float(validation["model_macro_cell_mae_soh_pp"])
@@ -586,6 +615,7 @@ def analyze_harmonized_parameters(
                 "model": entry["estimator"],
                 "feature_values": feature_values,
                 "feature_terms": [],
+                "local_explanation": local_shap,
                 "interpretation": explanation_text,
                 "persistence_comparator_percent": float(current_soh),
                 "model_minus_persistence_percentage_points": float(prediction - current_soh) if prediction is not None else None,

@@ -1,0 +1,2 @@
+# Optional dependency for the research-only sequence-model experiment.
+torch>=2.2,<3
