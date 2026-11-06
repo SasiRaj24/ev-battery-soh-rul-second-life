@@ -368,9 +368,8 @@ def analyze_history(
         "persistence_comparator_percent": persistence_soh,
         "model_minus_persistence_percentage_points": predicted_soh - persistence_soh,
     }
-    rul_shap = _tree_shap(rul_model, rul_input, RUL_FEATURES)
-
     rul_input = featured.iloc[[-1]][RUL_FEATURES]
+    rul_shap = _tree_shap(rul_model, rul_input, RUL_FEATURES)
     current_capacity = float(current["discharge_capacity_Ah"])
     if not compatible_with_nasa_rul_scope:
         rul_estimate = None
